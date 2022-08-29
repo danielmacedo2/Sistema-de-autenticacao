@@ -39,6 +39,10 @@ app.post("/register", async (req, res) => {
 
   const userExist = await User.findOne({ email: email });
 
+  if(userExist){
+    res.status(400).json({ message: "Esse email já esta em uso, tente novamente!" })
+  }
+
   // creating password
   const salt = await bcrypt.genSalt(15);
   const passwordHash = await bcrypt.hash(password, salt);
