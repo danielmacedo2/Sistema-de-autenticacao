@@ -18,8 +18,10 @@ app.get("/", (req, res) => {
 
 // API Routes
 const registerRoute = require('./Routes/register')
+const loginRoute = require("./Routes/login")
 
 app.use('/register', registerRoute)
+app.use('/login', loginRoute)
 
 // Credentials
 const dbUser = process.env.USER;
