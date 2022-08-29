@@ -6,10 +6,10 @@ const jwt = require("jsonwebtoken");
 const app = express();
 
 // json configuration
-app.use(express.json())
+app.use(express.json());
 
-// exporting user model
-const User = require("./Models/User")
+// importing user model
+const User = require("./Models/User");
 
 // open route
 app.get("/", (req, res) => {
@@ -17,26 +17,25 @@ app.get("/", (req, res) => {
 });
 
 // register
-app.post('/register', async (req, res) => {
-  const { name, email, password, confirmPassword } = req.body
+app.post("/register", async (req, res) => {
+  const { name, email, password, confirmPassword } = req.body;
 
-  if(!name) {
-    res.status(422).json({ message: "O nome é obrigatório!" })
+  if (!name) {
+    res.status(422).json({ message: "O nome é obrigatório!" });
   }
-  if(!email) {
-    res.status(422).json({ message: "O email é obrigatório!" })
+  if (!email) {
+    res.status(422).json({ message: "O email é obrigatório!" });
   }
-  if(!password) {
-    res.status(422).json({ message: "A senha é obrigatória!" })
+  if (!password) {
+    res.status(422).json({ message: "A senha é obrigatória!" });
   }
-  if(!confirmPassword) {
-    res.status(422).json({ message: "A confirmação de senha é obrigatória!" })
+  if (!confirmPassword) {
+    res.status(422).json({ message: "A confirmação de senha é obrigatória!" });
   }
-  if(password !== confirmPassword) {
-    res.status(422).json({ message: "As senhas não correspondem a mesma!" })
+  if (password !== confirmPassword) {
+    res.status(422).json({ message: "As senhas não correspondem a mesma!" });
   }
-
-})
+});
 
 // Credentials
 const dbUser = process.env.USER;
