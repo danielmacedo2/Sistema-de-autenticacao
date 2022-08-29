@@ -42,6 +42,12 @@ app.post("/register", async (req, res) => {
   // creating password
   const salt = await bcrypt.genSalt(15);
   const passwordHash = await bcrypt.hash(password, salt);
+
+  const user = new User({
+    name,
+    email,
+    password: passwordHash
+  })
 });
 
 // Credentials
