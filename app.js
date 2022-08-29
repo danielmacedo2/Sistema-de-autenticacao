@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt")
 
 const app = express();
 
@@ -35,6 +36,9 @@ app.post("/register", async (req, res) => {
   if (password !== confirmPassword) {
     res.status(422).json({ message: "As senhas não correspondem a mesma!" });
   }
+
+  // checking if user exist
+  const userExist = await User.findOne({ email: email });
 });
 
 // Credentials
