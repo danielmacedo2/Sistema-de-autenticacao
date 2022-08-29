@@ -1,6 +1,7 @@
 // register route
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const User = require("../Models/User");
 
@@ -33,6 +34,8 @@ router.post("/", async (req, res) => {
   return res
     .status(200)
     .json({ message: "Autenticação realizada com sucesso!" });
+
+  // generate token authentication
 });
 
 module.exports = router;
