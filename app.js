@@ -37,8 +37,11 @@ app.post("/register", async (req, res) => {
     res.status(422).json({ message: "As senhas não correspondem a mesma!" });
   }
 
-  // checking if user exist
   const userExist = await User.findOne({ email: email });
+
+  // creating password
+  const salt = await bcrypt.genSalt(15);
+  const passwordHash = await bcrypt.hash(password, salt);
 });
 
 // Credentials
