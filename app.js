@@ -8,13 +8,16 @@ const app = express();
 // json configuration
 app.use(express.json())
 
+// exporting user model
+const User = require("./Models/User")
+
 // open route
 app.get("/", (req, res) => {
   res.send("Funcionando!");
 });
 
 // register
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
   const { name, email, password, confirmPassword } = req.body
 
   if(!name) {
@@ -24,13 +27,13 @@ app.post('/register', (req, res) => {
     res.status(422).json({ message: "O email é obrigatório!" })
   }
   if(!password) {
-    res.status(422).json({ message: "A senha é obrigatórias!" })
-  }
-  if(password !== confirmPassword) {
-    res.status(422).json({ message: "As senhas não correspondem a mesma!" })
+    res.status(422).json({ message: "A senha é obrigatória!" })
   }
   if(!confirmPassword) {
     res.status(422).json({ message: "A confirmação de senha é obrigatória!" })
+  }
+  if(password !== confirmPassword) {
+    res.status(422).json({ message: "As senhas não correspondem a mesma!" })
   }
 
 })
