@@ -8,25 +8,25 @@ router.post("/", async (req, res) => {
   const { name, email, password, confirmPassword } = req.body;
 
   if (!name) {
-    res.status(422).json({ message: "O nome é obrigatório!" });
+    return res.status(422).json({ message: "O nome é obrigatório!" });
   }
   if (!email) {
-    res.status(422).json({ message: "O email é obrigatório!" });
+    return res.status(422).json({ message: "O email é obrigatório!" });
   }
   if (!password) {
-    res.status(422).json({ message: "A senha é obrigatória!" });
+    return res.status(422).json({ message: "A senha é obrigatória!" });
   }
   if (!confirmPassword) {
-    res.status(422).json({ message: "A confirmação de senha é obrigatória!" });
+    return res.status(422).json({ message: "A confirmação de senha é obrigatória!" });
   }
   if (password !== confirmPassword) {
-    res.status(422).json({ message: "As senhas não correspondem a mesma!" });
+    return res.status(422).json({ message: "As senhas não correspondem a mesma!" });
   }
 
   const userExist = await User.findOne({ email: email });
 
   if (userExist) {
-    res
+    return res
       .status(400)
       .json({ message: "Esse email já esta em uso, tente novamente!" });
   }
