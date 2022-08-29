@@ -7,20 +7,32 @@ const User = require("../Models/User");
 router.post("/", async (req, res) => {
   const { email, password } = req.body;
 
-  if(!email) {
-    return res.status(422).json({ message: "O email é obrigatório!" })
+  if (!email) {
+    return res.status(422).json({ message: "O email é obrigatório!" });
   }
-  if(!password) {
-    return res.status(422).json({ message: "A senha é obrigatória!" })
+  if (!password) {
+    return res.status(422).json({ message: "A senha é obrigatória!" });
   }
 
-  const userExist = await User.findOne({ email: email })
+  const userExist = await User.findOne({ email: email });
 
-  if(!userExist) {
-    return res.status(404).json({ message: "Usuário não encontrado, email inválido!"})
+  if (!userExist) {
+    return res
+      .status(404)
+      .json({ message: "Usuário não encontrado, email inválido!" });
   }
 
   // conferindo a senha
-})
+  const checkPassword = await bcrypt.compare(password, userExist.password);
+
+  if (!checkPassword) {
+    return res.status(403).json({ message: "Senha incorreta!" });
+  }
+
+  // if everything goes right
+  return res
+    .status(200)
+    .json({ message: "Autenticação realizada com sucesso!" });
+});
 
 module.exports = router;
