@@ -39,3 +39,14 @@ Para criar um usuário, crie e utilize a rota http://localhost:4000/auth/registe
     "confirmPassword": "joao123"
 }
 ```
+## Autenticando usuário
+
+Para autenticar usuário, crie e utilize a rota http://localhost:4000/auth/login com método POST, especificando email e password.
+Após a autenticação será gerado um token, que pode ser utilizado para acessar a rota privada.
+
+```
+{
+    "email": "joao@teste.com",
+    "password": "Joao123"
+}
+```
