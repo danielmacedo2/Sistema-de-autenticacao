@@ -51,4 +51,4 @@ Após a autenticação será gerado um token, que pode ser utilizado para acessa
 }
 ```
 ## Rota privada
-Para acessar a rota privada, crie e utilize a rota http://localhost:4000/user/:id passando o id do usuário em (:id) e utilizando o token de segurança para ter acesso aos dados do usuário.
+Para acessar a rota privada, crie e utilize a rota http://localhost:4000/user/:id com método GET, passando o id do usuário em (:id) e utilizando o token de segurança para ter acesso aos dados do usuário.
