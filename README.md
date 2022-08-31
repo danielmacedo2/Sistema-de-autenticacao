@@ -47,6 +47,6 @@ Após a autenticação será gerado um token, que pode ser utilizado para acessa
 ```
 {
     "email": "joao@teste.com",
-    "password": "Joao123"
+    "password": "joao123"
 }
 ```
