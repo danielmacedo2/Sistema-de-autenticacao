@@ -26,3 +26,16 @@ Rodar o servidor
 ```
 nodemon app.js
 ```
+
+## Registrando usuário
+
+Para criar um usuário, crie e utilize a rota http://localhost:4000/auth/register com método POST, utilizando no body da requisição name, email, password, confirmPassword (confirmação de senha)
+
+```
+{
+    "name": "João",
+    "emai": "joao@teste.com",
+    "password": "joao123",
+    "confirmPassword": "joao123"
+}
+```
