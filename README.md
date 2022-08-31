@@ -29,7 +29,7 @@ nodemon app.js
 
 ## Registrando usuário
 
-Para criar um usuário, crie e utilize a rota http://localhost:4000/auth/register com método POST, utilizando no body da requisição name, email, password, confirmPassword (confirmação de senha)
+Para criar um usuário, crie e utilize a rota http://localhost:4000/auth/register com método POST, utilizando no body da requisição name, email, password, confirmPassword (confirmação de senha).
 
 ```
 {
@@ -50,3 +50,5 @@ Após a autenticação será gerado um token, que pode ser utilizado para acessa
     "password": "joao123"
 }
 ```
+## Rota privada
+Para acessar a rota privada, crie e utilize a rota http://localhost:4000/user/:id passando o id do usuário em (:id) e utilizando o token de segurança para ter acesso aos dados do usuário.
